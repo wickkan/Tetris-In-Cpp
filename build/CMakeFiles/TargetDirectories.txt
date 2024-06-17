@@ -1,0 +1,3 @@
+/Users/kanishkaw/Desktop/Tech/Software_Development/Cpp/Tetris-In-Cpp/build/CMakeFiles/Tetris.dir
+/Users/kanishkaw/Desktop/Tech/Software_Development/Cpp/Tetris-In-Cpp/build/CMakeFiles/edit_cache.dir
+/Users/kanishkaw/Desktop/Tech/Software_Development/Cpp/Tetris-In-Cpp/build/CMakeFiles/rebuild_cache.dir
