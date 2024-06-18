@@ -16,12 +16,14 @@ private:
     void update();
     void render();
     void reset();
+    void clearLines();
 
     SDL_Window *window;
     SDL_Renderer *renderer;
     bool isRunning;
     int board[20][10];
     Tetromino currentTetromino;
+    Tetromino nextTetromino;
     Uint32 lastTick;
     Uint32 tickInterval;
 };

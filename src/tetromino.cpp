@@ -9,18 +9,35 @@ Tetromino::Tetromino()
     std::cout << "Tetromino created." << std::endl;
 }
 
-void Tetromino::rotate()
+bool Tetromino::canMove(int dx, int dy, const int board[20][10])
 {
-    // Rotate the tetromino
+    for (const auto &block : blocks)
+    {
+        int newX = block.x + dx;
+        int newY = block.y + dy;
+        if (newX < 0 || newX >= 10 || newY < 0 || newY >= 20 || board[newY][newX] != 0)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
-void Tetromino::move(int dx, int dy)
+void Tetromino::move(int dx, int dy, const int board[20][10])
 {
-    for (auto &block : blocks)
+    if (canMove(dx, dy, board))
     {
-        block.x += dx;
-        block.y += dy;
+        for (auto &block : blocks)
+        {
+            block.x += dx;
+            block.y += dy;
+        }
     }
+}
+
+void Tetromino::rotate(const int board[20][10])
+{
+    // Implement rotation logic with collision detection
 }
 
 void Tetromino::render(SDL_Renderer *renderer)
