@@ -11,6 +11,7 @@ Game::Game() : window(nullptr), renderer(nullptr), isRunning(false), lastTick(0)
             board[y][x] = 0;
         }
     }
+    std::cout << "Game object created." << std::endl;
 }
 
 bool Game::init()
@@ -37,6 +38,7 @@ bool Game::init()
     }
 
     isRunning = true;
+    std::cout << "Initialization successful." << std::endl;
     return true;
 }
 
@@ -56,6 +58,7 @@ void Game::cleanup()
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+    std::cout << "Cleanup done." << std::endl;
 }
 
 void Game::processInput()
@@ -88,8 +91,10 @@ void Game::render()
     SDL_RenderClear(renderer);
 
     // Render the board and the current tetromino
+    currentTetromino.render(renderer);
 
     SDL_RenderPresent(renderer);
+    std::cout << "Rendered frame." << std::endl;
 }
 
 void Game::reset()
