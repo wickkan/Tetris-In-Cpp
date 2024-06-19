@@ -192,8 +192,8 @@ void Game::clearLines()
             {
                 board[0][tx] = 0;
             }
-            score += 100;                                    // Increase score
-            tickInterval = std::max(100, tickInterval - 10); // Decrease interval to increase speed, min 100ms
+            score += 100;
+            tickInterval = std::max(100u, tickInterval - 10u); // Use unsigned integers for comparison
         }
     }
 }
