@@ -109,9 +109,15 @@ void Game::update()
                 board[block.y][block.x] = 1; // Mark as filled
             }
             clearLines(); // Clear any full lines
-            // Create a new tetromino
+
+            // Create a new tetromino and check for game over
             currentTetromino = nextTetromino;
             nextTetromino = Tetromino();
+            if (!currentTetromino.canMove(0, 0, board))
+            {
+                isRunning = false; // Game over
+                std::cout << "Game Over!" << std::endl;
+            }
         }
         lastTick = currentTick;
     }
