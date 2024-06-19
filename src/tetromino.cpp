@@ -7,7 +7,6 @@
 
 Tetromino::Tetromino()
 {
-    std::srand(std::time(0)); // Initialize random seed
     int shapeType = std::rand() % 7;
 
     switch (shapeType)
