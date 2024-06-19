@@ -1,5 +1,6 @@
 #include "tetromino.h"
 #include <iostream>
+#include <algorithm>
 
 Tetromino::Tetromino()
 {
@@ -35,9 +36,37 @@ void Tetromino::move(int dx, int dy, const int board[20][10])
     }
 }
 
+bool Tetromino::canRotate(const int board[20][10])
+{
+    std::vector<SDL_Point> rotatedBlocks(blocks);
+    SDL_Point pivot = blocks[1]; // Using the second block as pivot for simplicity
+    for (auto &block : rotatedBlocks)
+    {
+        int x = block.x - pivot.x;
+        int y = block.y - pivot.y;
+        int newX = pivot.x - y;
+        int newY = pivot.y + x;
+        if (newX < 0 || newX >= 10 || newY < 0 || newY >= 20 || board[newY][newX] != 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 void Tetromino::rotate(const int board[20][10])
 {
-    // Implement rotation logic with collision detection
+    if (canRotate(board))
+    {
+        SDL_Point pivot = blocks[1]; // Using the second block as pivot for simplicity
+        for (auto &block : blocks)
+        {
+            int x = block.x - pivot.x;
+            int y = block.y - pivot.y;
+            block.x = pivot.x - y;
+            block.y = pivot.y + x;
+        }
+    }
 }
 
 void Tetromino::render(SDL_Renderer *renderer)
