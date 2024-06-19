@@ -22,6 +22,7 @@ private:
     SDL_Renderer *renderer;
     bool isRunning;
     int board[20][10];
+    int score;
     Tetromino currentTetromino;
     Tetromino nextTetromino;
     Uint32 lastTick;

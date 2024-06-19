@@ -1,7 +1,7 @@
 #include "game.h"
 #include <iostream>
 
-Game::Game() : window(nullptr), renderer(nullptr), isRunning(false), lastTick(0), tickInterval(500),
+Game::Game() : window(nullptr), renderer(nullptr), isRunning(false), lastTick(0), tickInterval(500), score(0),
                currentTetromino(Tetromino()), nextTetromino(Tetromino())
 {
     // Initialize board
@@ -152,6 +152,10 @@ void Game::render()
     SDL_RenderFillRect(renderer, &previewArea);
     nextTetromino.render(renderer); // You may need to adjust positions within the preview area
 
+    // Render the score
+    // For simplicity, we will just print the score to the console
+    std::cout << "Score: " << score << std::endl;
+
     SDL_RenderPresent(renderer);
     std::cout << "Rendered frame." << std::endl;
 }
@@ -188,6 +192,8 @@ void Game::clearLines()
             {
                 board[0][tx] = 0;
             }
+            score += 100;                                    // Increase score
+            tickInterval = std::max(100, tickInterval - 10); // Decrease interval to increase speed, min 100ms
         }
     }
 }
