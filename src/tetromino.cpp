@@ -1,12 +1,46 @@
 #include "tetromino.h"
 #include <iostream>
 #include <algorithm>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 
 Tetromino::Tetromino()
 {
-    // Initialize a tetromino shape, for example, the "T" shape
-    blocks = {{0, 1}, {1, 1}, {2, 1}, {1, 0}};
-    color = {0xFF, 0x00, 0xFF, 0xFF};
+    std::srand(std::time(0)); // Initialize random seed
+    int shapeType = std::rand() % 7;
+
+    switch (shapeType)
+    {
+    case 0: // I shape
+        blocks = {{0, 1}, {1, 1}, {2, 1}, {3, 1}};
+        color = {0x00, 0xFF, 0xFF, 0xFF}; // Cyan
+        break;
+    case 1: // O shape
+        blocks = {{1, 0}, {2, 0}, {1, 1}, {2, 1}};
+        color = {0xFF, 0xFF, 0x00, 0xFF}; // Yellow
+        break;
+    case 2: // T shape
+        blocks = {{0, 1}, {1, 1}, {2, 1}, {1, 0}};
+        color = {0xFF, 0x00, 0xFF, 0xFF}; // Magenta
+        break;
+    case 3: // S shape
+        blocks = {{1, 0}, {2, 0}, {0, 1}, {1, 1}};
+        color = {0x00, 0xFF, 0x00, 0xFF}; // Green
+        break;
+    case 4: // Z shape
+        blocks = {{0, 0}, {1, 0}, {1, 1}, {2, 1}};
+        color = {0xFF, 0x00, 0x00, 0xFF}; // Red
+        break;
+    case 5: // J shape
+        blocks = {{0, 0}, {0, 1}, {1, 1}, {2, 1}};
+        color = {0x00, 0x00, 0xFF, 0xFF}; // Blue
+        break;
+    case 6: // L shape
+        blocks = {{2, 0}, {0, 1}, {1, 1}, {2, 1}};
+        color = {0xFF, 0xA5, 0x00, 0xFF}; // Orange
+        break;
+    }
     std::cout << "Tetromino created." << std::endl;
 }
 
