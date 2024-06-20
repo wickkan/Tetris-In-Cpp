@@ -87,6 +87,9 @@ void Game::processInput()
             case SDLK_UP:
                 currentTetromino.rotate(board);
                 break;
+            case SDLK_p:
+                isPaused = !isPaused;
+                break;
             }
         }
     }

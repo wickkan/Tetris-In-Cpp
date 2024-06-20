@@ -21,6 +21,7 @@ private:
     SDL_Window *window;
     SDL_Renderer *renderer;
     bool isRunning;
+    bool isPaused;
     int board[20][10];
     int score;
     Tetromino currentTetromino;
